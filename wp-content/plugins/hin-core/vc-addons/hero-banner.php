@@ -119,7 +119,12 @@ if (class_exists('WPBakeryVisualComposerAbstract')) {
 				'heading' => esc_html__('Class','hin-core'),
 				'param_name' => 'class',
 			),
-            
+            array(
+				'type' => 'css_editor',
+				'heading' => __( 'Css', 'prefab-core' ),
+				'param_name' => 'custom_design',
+				'group' => __( 'Design options', 'prefab-core' ),
+			)
 
 		)
 	));

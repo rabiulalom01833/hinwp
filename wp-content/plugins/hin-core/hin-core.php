@@ -41,6 +41,7 @@ final class Hin_core {
 		if( HIN_CORE_VISUAL_COMPOSER_ACTIVED ) {
 			
 			require_once HIN_CORE_POST_DIR . '/vc-addons/hero-banner.php';
+			require_once HIN_CORE_POST_DIR . '/vc-addons/video-feature.php';
 		 
 		}
 	}
