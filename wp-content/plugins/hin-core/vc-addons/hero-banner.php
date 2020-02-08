@@ -10,18 +10,19 @@ add_shortcode( 'hero_banner', function($atts, $content = null) {
 		'add_name' => '',
 		'add_designation' => '',
 		'add_details' => '',
-		'url' => '',
+		'download_cv' => '',
+		'explore_work' => '',
  		'man_mage' => '',
  	), $atts));
 
  
  
     $description = html_entity_decode(vc_value_from_safe( $description, true ));
-    $url = vc_build_link( $url );
-	$download_cv = isset($url['url']) ? $url['url'] : '#';
-	$page_link = isset($url['url']) ? $url['url'] : '#';
-	$explore_work = isset($url['url']) ? $url['url'] : '#';
-    $man_mage = wp_get_attachment_image_src( $man_mage, 'full' );
+    $download_url = vc_build_link( $download_url );
+    $explore_work_url = vc_build_link( $explore_work_url );
+	$download_cv = isset($url['download_url']) ? $url['download_url'] : '#';
+ 	$explore_work = isset($url['explore_work_url']) ? $url['explore_work_url'] : '#';
+     $man_mage = wp_get_attachment_image_src( $man_mage, 'full');
 
     $output ='';
     
@@ -31,7 +32,7 @@ add_shortcode( 'hero_banner', function($atts, $content = null) {
             $output .= '<img class="shape-left" src="assets/img/home1/hero1-left-shape.png" alt="">';
             $output .= '<img class="shape-right-same" src="assets/img/home1/hero1-left-shape.png" alt="">';
             $output .= '<img class="shape-right" src="assets/img/home1/hero1-right-shape.png" alt="">';
-            $output .= '<img class="man-middle" src="assets/img/home1/hero-man-111.png" alt="">';
+            $output .= '<img class="man-middle" src="'. current($man_mage) .'" alt="">';
             $output .= '<img class="hero-dots-1" src="assets/img/home1/hero-dot-1.png" alt="">';
             $output .= '<img class="hero-dots-2" src="assets/img/home1/hero-dot-2.png" alt="">';
             $output .= '<img class="hero-triangle" src="assets/img/home1/triangle.png" alt="">';
@@ -47,7 +48,7 @@ add_shortcode( 'hero_banner', function($atts, $content = null) {
                         $output .= '<div class="hero-text-home1 text-left">';
                             $output .= '<h3>'.$add_name.'</h3>';
                             $output .= '<h1 class="text-yellow">'.$add_name.'</h1>';
-                            $output .= '<h4>'.esc_html($description).'</h4>';
+                            $output .= '<h4>'.esc_html($add_details).'</h4>';
                                 $output .= '<a href="'. esc_url($download_cv) .'" class="btn-1 btn-bgc-1">Download CV</a>';
                                 $output .= '<a href="'. esc_url($explore_work) .'" class="btn-1 btn-bgc-2">Explore Work</a>';
                           $output .= '</div>';
@@ -98,8 +99,14 @@ if (class_exists('WPBakeryVisualComposerAbstract')) {
 
             array(
 				"type" => "vc_link",
-				"heading" => __("Button", 'hin-core'),
-				"param_name" => "url",
+				"heading" => __("Add Cv Link", 'hin-core'),
+				"param_name" => "download_url",
+             ),
+
+             array(
+				"type" => "vc_link",
+				"heading" => __("Explore work", 'hin-core'),
+				"param_name" => "explore_work",
              ),
           
 			array(
