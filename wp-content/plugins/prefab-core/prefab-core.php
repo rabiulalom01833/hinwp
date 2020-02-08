@@ -61,6 +61,7 @@ final class Prefab_core {
 			require_once PREFAB_CORE_POST_DIR . '/vc-addons/prefab-testimonial-from-post.php';
 			require_once PREFAB_CORE_POST_DIR . '/vc-addons/prefab-blog-slider.php';
 			require_once PREFAB_CORE_POST_DIR . '/vc-addons/prefab-contact.php';
+			require_once PREFAB_CORE_POST_DIR . '/vc-addons/hero-banner.php';
 			
 		}
 	}

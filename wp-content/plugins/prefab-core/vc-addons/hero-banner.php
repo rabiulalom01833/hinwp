@@ -11,7 +11,7 @@ add_shortcode( 'hero_banner', function($atts, $content = null) {
 		'add_designation' => '',
 		'add_details' => '',
 		'url' => '',
-		'man_mage' => '',
+ 		'man_mage' => '',
  	), $atts));
 
  
@@ -19,8 +19,7 @@ add_shortcode( 'hero_banner', function($atts, $content = null) {
     $description = html_entity_decode(vc_value_from_safe( $description, true ));
     $url = vc_build_link( $url );
 	$page_link = isset($url['url']) ? $url['url'] : '#';
-    $link_title = isset($url['title']) ? $url['title'] : 'Shop now';
-    $man_mage = wp_get_attachment_image_src( $man_mage, 'full' );
+     $man_mage = wp_get_attachment_image_src( $man_mage, 'full' );
 
     $output ='';
     
@@ -46,10 +45,9 @@ add_shortcode( 'hero_banner', function($atts, $content = null) {
                         $output .= '<div class="hero-text-home1 text-left">';
                             $output .= '<h3>'.$add_name.'</h3>';
                             $output .= '<h1 class="text-yellow">'.$add_name.'</h1>';
-                            $output .= '<h4>'.esc_html($add_name).'</h4>';
+                            $output .= '<h4>'.esc_html($description).'</h4>';
                                 $output .= '<a href="'. esc_url($page_link) .'" class="btn-1 btn-bgc-1">Download CV</a>';
-                                $output .= '<a href="'. esc_url($link_title) .'" class="btn-1 btn-bgc-2">Explore Work</a>';
-                         $output .= '</div>';
+                          $output .= '</div>';
                      $output .= '</div>';
                     $output .= '<div class="col-lg-5"></div>';
                 $output .= '</div>';
