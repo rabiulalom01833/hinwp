@@ -10,19 +10,18 @@ add_shortcode( 'hero_banner', function($atts, $content = null) {
 		'add_name' => '',
 		'add_designation' => '',
 		'add_details' => '',
-		'download_cv' => '',
-		'explore_work' => '',
+		'url' => '',
+		'urlexplore' => '',
  		'man_mage' => '',
  	), $atts));
 
  
  
-    $description = html_entity_decode(vc_value_from_safe( $description, true ));
-    $download_url = vc_build_link( $download_url );
-    $explore_work_url = vc_build_link( $explore_work_url );
-	$download_cv = isset($url['download_url']) ? $url['download_url'] : '#';
- 	$explore_work = isset($url['explore_work_url']) ? $url['explore_work_url'] : '#';
-     $man_mage = wp_get_attachment_image_src( $man_mage, 'full');
+	$description = html_entity_decode(vc_value_from_safe( $description, true )); 
+	$url = vc_build_link( $url );
+	$download_cv = isset($url['url']) ? $url['url'] : '#';
+ 	$explore_work = isset($url['urlexplore']) ? $url['urlexplore'] : '#';
+    $man_mage = wp_get_attachment_image_src( $man_mage, 'full');
 
     $output ='';
     
@@ -100,13 +99,13 @@ if (class_exists('WPBakeryVisualComposerAbstract')) {
             array(
 				"type" => "vc_link",
 				"heading" => __("Add Cv Link", 'hin-core'),
-				"param_name" => "download_url",
+				"param_name" => "url",
              ),
 
              array(
 				"type" => "vc_link",
 				"heading" => __("Explore work", 'hin-core'),
-				"param_name" => "explore_work",
+				"param_name" => "urlexplore",
              ),
           
 			array(

@@ -9,7 +9,7 @@ add_shortcode( 'video_feature', function($atts, $content = null) {
 	extract(shortcode_atts(array(
 		'add_video_title' => '',
 		'video_add_details' => '',
-		'read_more_url' => '',
+		'url' => '',
 		'youtube_video_url' => '',
 		'video_cover_img' => '',
 	 
@@ -18,8 +18,8 @@ add_shortcode( 'video_feature', function($atts, $content = null) {
  
  
     $description = html_entity_decode(vc_value_from_safe( $description, true ));
-    $video_url = vc_build_link( $video_url );
- 	$youtube_video_url = isset($url['video_url']) ? $url['video_url'] : '#';
+    $url = vc_build_link( $url );
+ 	$read_more_url = isset($url['url']) ? $url['url'] : '#';
     $video_cover_img = wp_get_attachment_image_src( $video_cover_img, 'full');
 
     $output ='';
@@ -35,9 +35,8 @@ $output .= '<section id="Hin-video-area" class="bg-dark-black pt-130">';
                 $output .= '<div class="section-title">';
                     $output .= '<h2>'.$add_video_title.'</h2>';
                     $output .= '<div class="section-title-border"></div>';
-                    $output .= '<p class="mt-5">'.$video_add_details.'</p>';
-
-                    $output .= '<a href="'.$read_more_url.'" class="btn-4 btn-bgc-1 mt-50">Read More</a>';
+                    $output .= '<p class="mt-5">'.$video_add_details.'</p>'; 
+                    $output .= '<a href="'. esc_url($read_more_url) .'" class="btn-4 btn-bgc-1 mt-50">Read More</a>';
                 $output .= '</div>';
             $output .= '</div>';
             $output .= '<div class="col-lg-5 offset-lg-1 col-md-8 offset-md-2">';
@@ -86,11 +85,11 @@ if (class_exists('WPBakeryVisualComposerAbstract')) {
             array(
 				"type" => "vc_link",
 				"heading" => __("Read More Url", 'hin-core'),
-				"param_name" => "read_more_url",
+				"param_name" => "url",
              ),
 
              array(
-				'type' => 'vc_link',
+				'type' => 'textfield',
 				'heading' => __('Youtube Video Url','hin-core'),
 				'param_name' => 'youtube_video_url',
             ),
