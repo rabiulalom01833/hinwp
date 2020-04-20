@@ -150,7 +150,7 @@ class Hero_Banner extends Widget_Base {
         
         $this->add_control(
 			'hero_banner_details', [
-				'label' => __( 'Sub Title', ' hin-elements' ),
+				'label' => __( 'Sub Details', ' hin-elements' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => __( 'Type your details here', ' hin-elements' ),
 			]
@@ -214,21 +214,79 @@ class Hero_Banner extends Widget_Base {
         $this->end_controls_section();
         
 
-         // STYLE SECTION - DESCRIPTION
+         // STYLE SECTION - TITLE
 		$this->start_controls_section(
-			'description_style',
+			'hero_banner_section_style',
 			[
-				'label' 		=> __( 'Description', ' hin-elements' ),
+				'label' 		=> __( 'Title Style', ' hin-elements' ),
 				'tab' 			=> Controls_Manager::TAB_STYLE
 			]
 		);
 		$this->add_control(
-			'description_color',
+			'title_color',
 			[
 				'label' => __( 'Text Color', ' hin-elements' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} p' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .hero-text-home1 h3' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} h3',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+
+        $this->end_controls_section();
+
+        // STYLE SECTION - SUB TITLE
+		$this->start_controls_section(
+			'hero_banner_section_sub_title',
+			[
+				'label' 		=> __( 'Sub Title Style', ' hin-elements' ),
+				'tab' 			=> Controls_Manager::TAB_STYLE
+			]
+		);
+		$this->add_control(
+			'sub_title_color',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .hero-text-home1 h1' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'sub_title_typography',
+				'selector' => '{{WRAPPER}} h1',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+
+        $this->end_controls_section();
+
+        // STYLE SECTION - DESCRIPTION
+		$this->start_controls_section(
+			'hero_banner_section_discription',
+			[
+				'label' 		=> __( 'Description Style', ' hin-elements' ),
+				'tab' 			=> Controls_Manager::TAB_STYLE
+			]
+		);
+		$this->add_control(
+			'details_color',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .hero-text-home1 h4' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -236,7 +294,7 @@ class Hero_Banner extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'description_typography',
-				'selector' => '{{WRAPPER}} p',
+				'selector' => '{{WRAPPER}} h4',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1
 			]
 		);
@@ -244,6 +302,103 @@ class Hero_Banner extends Widget_Base {
         $this->end_controls_section();
         
         
+        // STYLE SECTION - DOWNLOAD CV
+
+		$this->start_controls_section(
+			'hero_banner_section_button_1',
+			[
+				'label' 		=> __( 'Button Style 1', ' hin-elements' ),
+				'tab' 			=> Controls_Manager::TAB_STYLE
+			]
+        );
+        
+		$this->add_control(
+			'button_style_1',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}  .btn-bgc-1' => 'color: {{VALUE}};',
+				],
+			]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'background-1',
+				'label' => __( 'Background', 'hin-elements' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .btn-bgc-1',
+			]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border-1',
+				'label' => __( 'Border', 'hin-elements' ),
+				'selector' => '{{WRAPPER}} .btn-bgc-1',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_1_typography',
+				'selector' => '{{WRAPPER}} a',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+
+        $this->end_controls_section();
+
+         // STYLE SECTION - Explore Work Button
+
+		$this->start_controls_section(
+			'hero_banner_section_button_2',
+			[
+				'label' 		=> __( 'Button Style 2', ' hin-elements' ),
+				'tab' 			=> Controls_Manager::TAB_STYLE
+			]
+        );
+        
+		$this->add_control(
+			'button_style_2',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}  .btn-bgc-2' => 'color: {{VALUE}};',
+				],
+			]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'background-2',
+				'label' => __( 'Background', 'hin-elements' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .btn-bgc-2',
+			]
+        );
+        $this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border-2',
+				'label' => __( 'Border', 'hin-elements' ),
+				'selector' => '{{WRAPPER}} .btn-bgc-2',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_2_typography',
+				'selector' => '{{WRAPPER}} a',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+
+        $this->end_controls_section();
+
+
     }
     
 
@@ -291,8 +446,8 @@ class Hero_Banner extends Widget_Base {
                         <div class="col-lg-7">
 
                             <div class="hero-text-home1 text-left">
-                                <h3><?php echo $settings['title']; ?></h3>
-                                <h1 class="text-yellow"><?php echo $settings['hero_banner_title']; ?></h1>
+                                <h3><?php echo $settings['hero_banner_title']; ?></h3>
+                                <h1 class="text-yellow"><?php echo $settings['hero_banner_subtitle']; ?></h1>
                                 <h4><?php echo $settings['hero_banner_details']; ?></h4> 
                                 <a href="<?php echo esc_url($settings['download_cv']['url']); ?>" class="btn-1 btn-bgc-1" <?php echo $target; ?> <?php echo $nofollow; ?>>  <?php echo $settings['hero_banner_download_button']; ?> </a>
                                 <a href="<?php echo esc_url($settings['explore_work']['url']); ?>" class="btn-1 btn-bgc-2" <?php echo $target1; ?> <?php echo $nofollow1; ?> > <?php echo $settings['hero_banner_explor_button']; ?> </a>
