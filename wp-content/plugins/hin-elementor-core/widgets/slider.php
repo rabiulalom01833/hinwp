@@ -46,7 +46,7 @@ class Full_Slider extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Full Slider', ' hin-elements' );
+		return __( 'Full Slider', 'ic-elements' );
 	}
 
 	/**
@@ -96,7 +96,7 @@ class Full_Slider extends Widget_Base {
         $this->start_controls_section(
 			'Full_Sliders',
 			[
-                'label' => __( 'Full Slider', ' hin-elements' ),
+                'label' => __( 'Full Slider', 'ic-elements' ),
                 'label_block' => true,
 			]
 		);
@@ -107,7 +107,7 @@ class Full_Slider extends Widget_Base {
        	$repeater->add_control(
 			'image',
 			array(
-				'label'   => esc_html__( 'Image', ' hin-elements' ),
+				'label'   => esc_html__( 'Image', 'ic-elements' ),
 				'type'    => Controls_Manager::MEDIA,
 				'default' => array(
 					'url' => Utils::get_placeholder_image_src(),
@@ -128,34 +128,34 @@ class Full_Slider extends Widget_Base {
         
         $repeater->add_control(
 			'title', [
-				'label' => __( 'Title', ' hin-elements' ),
+				'label' => __( 'Title', 'ic-elements' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
 			]
 		);
 		$repeater->add_control(
 			'subtitle', [
-				'label' => __( 'Sub Title', ' hin-elements' ),
+				'label' => __( 'Sub Title', 'ic-elements' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( 'Type your Sub Title here', ' hin-elements' ),
+				'placeholder' => __( 'Type your Sub Title here', 'ic-elements' ),
 			]
 		);
         
 		$this->add_control(
 			'slider_repeat',
 			[
-				'label' => __( 'Slider', ' hin-elements' ),
+				'label' => __( 'Slider', 'ic-elements' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'image' => __( 'Slider Image', ' hin-elements' ),
-						'title' => __( 'Add Slider', ' hin-elements' ),
-						'subtitle' => __( 'Slider Sub Title', ' hin-elements' ),
+						'image' => __( 'Slider Image', 'ic-elements' ),
+						'title' => __( 'Add Slider', 'ic-elements' ),
+						'subtitle' => __( 'Slider Sub Title', 'ic-elements' ),
                     ],
                     [
-						'image' => __( 'Slider Image', ' hin-elements' ),
-						'title' => __( 'Add Slider', ' hin-elements' ),
+						'image' => __( 'Slider Image', 'ic-elements' ),
+						'title' => __( 'Add Slider', 'ic-elements' ),
 						'subtitle' => __( 'Slider Sub Title', 'ic-elements' ),
 					],
 					 
