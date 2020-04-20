@@ -96,7 +96,7 @@ class Hero_Banner extends Widget_Base {
         $this->start_controls_section(
 			'hero_banner',
 			[
-                'label' => __( 'Hero Banner', ' hin-elements' ),
+                'label' => __( 'Hero Image', ' hin-elements' ),
                 'label_block' => true,
 			]
 		);
@@ -128,13 +128,14 @@ class Hero_Banner extends Widget_Base {
         $this->start_controls_section(
 			'hero_banner_section',
 			[
-				'label' => __( 'Content', ' hin-elements' ),
+				'label' => __( 'Hero Details', ' hin-elements' ),
 			]
 		);
 		$this->add_control(
 			'hero_banner_title', [
 				'label' => __( 'Title', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
+                'placeholder' => __( 'Type your Title here', ' hin-elements' ),
 				'label_block' => true,
 			]
 		);
@@ -142,7 +143,8 @@ class Hero_Banner extends Widget_Base {
 			'hero_banner_subtitle', [
 				'label' => __( 'Sub Title', ' hin-elements' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Type your Sub Title here', ' hin-elements' ),
+                'placeholder' => __( 'Type your Sub Title here', ' hin-elements' ),
+                'label_block' => true,
 			]
 		);
         
@@ -150,7 +152,7 @@ class Hero_Banner extends Widget_Base {
 			'hero_banner_details', [
 				'label' => __( 'Sub Title', ' hin-elements' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( 'Type your Sub Title here', ' hin-elements' ),
+				'placeholder' => __( 'Type your details here', ' hin-elements' ),
 			]
 		);
 	  
@@ -208,8 +210,45 @@ class Hero_Banner extends Widget_Base {
 				],
 			]
         );
+
+        $this->end_controls_section();
         
-	}
+
+         // STYLE SECTION - DESCRIPTION
+		$this->start_controls_section(
+			'description_style',
+			[
+				'label' 		=> __( 'Description', ' hin-elements' ),
+				'tab' 			=> Controls_Manager::TAB_STYLE
+			]
+		);
+		$this->add_control(
+			'description_color',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} p' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'description_typography',
+				'selector' => '{{WRAPPER}} p',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+
+        $this->end_controls_section();
+        
+        
+    }
+    
+
+
+    
 
 	/**
 	 * Render the widget output on the frontend.
