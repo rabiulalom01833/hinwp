@@ -156,7 +156,59 @@ class Hero_Banner extends Widget_Base {
 	  
         $this->end_controls_section();
 
+        $this->start_controls_section(
+			'hero_banner_button',
+			[
+				'label' => __( 'Button', 'hin-elements' ),
+			]
+		);
 
+        $this->add_control(
+			'hero_banner_download_button', [
+				'label' => __( 'Button Name 1', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'download_cv',
+			[
+				'label' => __( 'Download Cv link', 'ic-elements' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => __( 'https://your-link.com', 'ic-elements' ),
+				'show_external' => true,
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+			]
+        );
+
+        $this->add_control(
+			'hero_banner_explor_button', [
+				'label' => __( 'Button Name 2', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+        );
+        
+        $this->add_control(
+			'explore_work',
+			[
+				'label' => __( 'Explore Work Link', 'ic-elements' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => __( 'https://your-link.com', 'ic-elements' ),
+				'show_external' => true,
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+			]
+        );
+        
 	}
 
 	/**
@@ -170,7 +222,11 @@ class Hero_Banner extends Widget_Base {
 	 */
 	protected function render() {
         $settings = $this->get_settings_for_display(); 
-        
+ 
+		$target = $settings['download_cv']['is_external'] ? ' target="_blank"' : '';
+		$nofollow = $settings['download_cv']['nofollow'] ? ' rel="nofollow"' : '';
+		$target1 = $settings['explore_work']['is_external'] ? ' target="_blank"' : '';
+		$nofollow1 = $settings['explore_work']['nofollow'] ? ' rel="nofollow"' : '';
  
         ?> 
         <section id="hero-area1" class="hero-top">
@@ -194,13 +250,15 @@ class Hero_Banner extends Widget_Base {
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7">
+
                             <div class="hero-text-home1 text-left">
                                 <h3><?php echo $settings['title']; ?></h3>
                                 <h1 class="text-yellow"><?php echo $settings['hero_banner_title']; ?></h1>
-                                <h4><?php echo $settings['hero_banner_details']; ?></h4>
-                                <a href="#" class="btn-1 btn-bgc-1">Download CV</a>
-                                <a href="#" class="btn-1 btn-bgc-2">Explore Work</a>
+                                <h4><?php echo $settings['hero_banner_details']; ?></h4> 
+                                <a href="<?php echo esc_url($settings['download_cv']['url']); ?>" class="btn-1 btn-bgc-1" <?php echo $target; ?> <?php echo $nofollow; ?>>  <?php echo $settings['hero_banner_download_button']; ?> </a>
+                                <a href="<?php echo esc_url($settings['explore_work']['url']); ?>" class="btn-1 btn-bgc-2" <?php echo $target1; ?> <?php echo $nofollow1; ?> > <?php echo $settings['hero_banner_explor_button']; ?> </a>
                             </div>
+
                         </div>
                         <div class="col-lg-5"></div>
                     </div>
