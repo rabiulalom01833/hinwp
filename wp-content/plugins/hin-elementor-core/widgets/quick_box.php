@@ -101,19 +101,19 @@ class quick_box extends \Elementor\Widget_Base {
 		$this->add_control(
 			'title',
 			[
-				'label' => __( 'Title', 'ic-elements' ),
+				'label' => __( 'Title', ' hin-elements' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Text editor title', 'ic-elements' ),
+				'default' => __( 'Text editor title', ' hin-elements' ),
 			]
 		);
 		$this->add_control(
 			'description', [
-				'label' => __( 'Description', 'ic-elements' ),
+				'label' => __( 'Description', ' hin-elements' ),
 				'type' => Controls_Manager::WYSIWYG,
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Type description here', 'ic-elements' ),
+				'placeholder' => __( 'Type description here', ' hin-elements' ),
 				'label_block' => true,
 			]
 		);
@@ -121,19 +121,19 @@ class quick_box extends \Elementor\Widget_Base {
         $this->add_control(
 			'text_align',
 			[
-				'label' => __( 'Alignment', 'ic-elements' ),
+				'label' => __( 'Alignment', ' hin-elements' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'ic-elements' ),
+						'title' => __( 'Left', ' hin-elements' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'ic-elements' ),
+						'title' => __( 'Center', ' hin-elements' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'ic-elements' ),
+						'title' => __( 'Right', ' hin-elements' ),
 						'icon' => 'fa fa-align-right',
 					],
 				],
@@ -152,7 +152,7 @@ class quick_box extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'title_style',
 			[
-				'label' => __( 'Title', 'ic-elements' ),
+				'label' => __( 'Title', ' hin-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -160,7 +160,7 @@ class quick_box extends \Elementor\Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Text Color', 'ic-elements' ),
+				'label' => __( 'Text Color', ' hin-elements' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} h2.ic-editor-title' => 'color: {{VALUE}};',
@@ -183,14 +183,14 @@ class quick_box extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'description_style',
 			[
-				'label' 		=> __( 'Description', 'ic-elements' ),
+				'label' 		=> __( 'Description', ' hin-elements' ),
 				'tab' 			=> Controls_Manager::TAB_STYLE
 			]
 		);
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Text Color', 'ic-elements' ),
+				'label' => __( 'Text Color', ' hin-elements' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} p' => 'color: {{VALUE}};',

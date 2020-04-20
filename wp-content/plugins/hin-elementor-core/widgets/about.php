@@ -46,7 +46,7 @@ class Quick_About extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'IC About', 'ic-elements' );
+		return __( 'IC About', ' hin-elements' );
 	}
 
 	/**
@@ -94,13 +94,13 @@ class Quick_About extends Widget_Base {
 		$this->start_controls_section(
 			'section_image',
 			[
-				'label' => __( 'Image', 'ic-elements' ),
+				'label' => __( 'Image', ' hin-elements' ),
 			]
 		);
 		$this->add_control(
 			'image',
 			array(
-				'label'   => esc_html__( 'Image', 'ic-elements' ),
+				'label'   => esc_html__( 'Image', ' hin-elements' ),
 				'type'    => Controls_Manager::MEDIA,
 				'default' => array(
 					'url' => Utils::get_placeholder_image_src(),
@@ -125,21 +125,21 @@ class Quick_About extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label' => __( 'Content', 'ic-elements' ),
+				'label' => __( 'Content', ' hin-elements' ),
 			]
 		);
 		$this->add_control(
 			'title', [
-				'label' => __( 'Title', 'ic-elements' ),
+				'label' => __( 'Title', ' hin-elements' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
 			]
 		);
 		$this->add_control(
 			'subtitle', [
-				'label' => __( 'Sub Title', 'ic-elements' ),
+				'label' => __( 'Sub Title', ' hin-elements' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => __( 'Type your Sub Title here', 'ic-elements' ),
+				'placeholder' => __( 'Type your Sub Title here', ' hin-elements' ),
 			]
 		);
 	 
@@ -150,7 +150,7 @@ class Quick_About extends Widget_Base {
         $this->start_controls_section(
 			'social_content',
 			[
-                'label' => __( 'Social', 'ic-elements' ),
+                'label' => __( 'Social', ' hin-elements' ),
                 'label_block' => true,
 			]
 		);
@@ -160,9 +160,9 @@ class Quick_About extends Widget_Base {
 		$repeater->add_control(
 			'icon_link', 
 			[
-				'label' => __( 'Link', 'ic-elements' ),
+				'label' => __( 'Link', ' hin-elements' ),
 				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => __( 'https://your-link.com', 'ic-elements' ),
+				'placeholder' => __( 'https://your-link.com', ' hin-elements' ),
 				'show_external' => true,
 				'default' => [
 					'url' => '', 
@@ -193,13 +193,13 @@ class Quick_About extends Widget_Base {
 		$this->add_control(
 			'social_box_url',
 			[
-				'label' => __( 'Contact Infos', 'ic-elements' ),
+				'label' => __( 'Contact Infos', ' hin-elements' ),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'icon_link' => __( 'Link Url', 'ic-elements' ),
-						'icon' => __( 'Add Icon', 'ic-elements' ),
+						'icon_link' => __( 'Link Url', ' hin-elements' ),
+						'icon' => __( 'Add Icon', ' hin-elements' ),
 					],
 					 
 				],
@@ -214,14 +214,14 @@ class Quick_About extends Widget_Base {
 		$this->start_controls_section(
 			'section_title_style',
 			[
-				'label' => __( 'Title', 'ic-elements' ),
+				'label' => __( 'Title', ' hin-elements' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Text Color', 'ic-elements' ),
+				'label' => __( 'Text Color', ' hin-elements' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .member-details h2' => 'color: {{VALUE}};'
@@ -243,14 +243,14 @@ class Quick_About extends Widget_Base {
 		$this->start_controls_section(
 			'section_subtitle_style',
 			[
-				'label' 		=> __( 'Sub Title', 'ic-elements' ),
+				'label' 		=> __( 'Sub Title', ' hin-elements' ),
 				'tab' 			=> Controls_Manager::TAB_STYLE
 			]
 		);
 		$this->add_control(
 			'subtitle_color',
 			[
-				'label' => __( 'Text Color', 'ic-elements' ),
+				'label' => __( 'Text Color', ' hin-elements' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .member-details h3' => 'color: {{VALUE}};',

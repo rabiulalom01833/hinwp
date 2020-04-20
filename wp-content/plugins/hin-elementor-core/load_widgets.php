@@ -50,9 +50,8 @@ class Plugin {
 		//require_once( __DIR__ . '/widgets/inline-editing.php' );
 
 		// All Operational Widges
-		require_once( __DIR__ . '/widgets/quick_box.php' );
-		require_once( __DIR__ . '/widgets/about.php' );
-		require_once( __DIR__ . '/widgets/slider.php' );
+	 
+		require_once( __DIR__ . '/widgets/hero_banner.php' );
     }
 
 	/**
@@ -68,9 +67,8 @@ class Plugin {
 		$this->include_widgets_files();
 
 		// Register Widgets
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\quick_box() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Quick_About() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Full_Slider() );
+	 
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Hero_Banner() );
 	 
 	}
 
