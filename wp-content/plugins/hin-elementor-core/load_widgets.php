@@ -52,6 +52,7 @@ class Plugin {
 		// All Operational Widges
 	 
 		require_once( __DIR__ . '/widgets/hero_banner.php' );
+		require_once( __DIR__ . '/widgets/video_area.php' );
     }
 
 	/**
@@ -69,6 +70,7 @@ class Plugin {
 		// Register Widgets
 	 
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Hero_Banner() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Video_Area() );
 	 
 	}
 
