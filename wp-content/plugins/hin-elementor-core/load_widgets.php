@@ -51,8 +51,10 @@ class Plugin {
 
 		// All Operational Widges
 	 
+		require_once( __DIR__ . '/widgets/section_title.php' );
 		require_once( __DIR__ . '/widgets/hero_banner.php' );
 		require_once( __DIR__ . '/widgets/video_area.php' );
+		require_once( __DIR__ . '/widgets/pricing_table.php' );
     }
 
 	/**
@@ -69,8 +71,10 @@ class Plugin {
 
 		// Register Widgets
 	 
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Section_Title() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Hero_Banner() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Video_Area() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Pricing_Table() );
 	 
 	}
 
