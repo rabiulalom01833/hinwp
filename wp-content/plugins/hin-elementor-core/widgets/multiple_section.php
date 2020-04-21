@@ -156,7 +156,7 @@ class multiple_section extends \Elementor\Widget_Base {
         $this->start_controls_section(
 			'about_tab',
 			[
-				'label' => __( 'About Tab', 'hin-elements' ),
+				'label' => __( 'About', 'hin-elements' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
         );
@@ -397,6 +397,79 @@ class multiple_section extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
 
+        $this->start_controls_section(
+			'services_box',
+			[
+                'label' => __( 'Services', ' hin-elements' ),
+                'label_block' => true,
+			]
+		);
+
+        $repeater = new Repeater();
+
+         
+        $repeater->add_control(
+			'service_icon',
+			[
+				'label' => __( 'Social Icons', 'plugin-domain' ),
+				'type' => \Elementor\Controls_Manager::ICON,
+				'include' => [
+					'fa fa-facebook',
+					'fa fa-flickr',
+					'fa fa-google-plus',
+					'fa fa-instagram',
+					'fa fa-linkedin',
+					'fa fa-pinterest',
+					'fa fa-reddit',
+					'fa fa-twitch',
+					'fa fa-twitter',
+					'fa fa-vimeo',
+					'fa fa-youtube',
+				],
+				'default' => 'fa fa-facebook',
+			]
+        );
+
+          
+        $repeater->add_control(
+			'service_name', [
+				'label' => __( 'Services Name', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+        );
+
+        $repeater->add_control(
+			'services_details', [
+				'label' => __( 'Services Details', ' hin-elements' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'label_block' => true,
+			]
+        );
+
+        
+        
+        $this->add_control(
+			'services_expeience',
+			[
+				'label' => __( 'Services', ' hin-elements' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[  
+						'service_icon' => __( 'Services Icon', ' hin-elements' ),
+						'service_name' => __( 'Services Institute', ' hin-elements' ),
+						'services_details' => __( 'Services Year', ' hin-elements' ),
+ 						 
+                    ],
+               
+					 
+				],
+				'title_field' => '{{{ service_name }}}',
+			]
+        );
+        
+        $this->end_controls_section();
   
 	}
 
@@ -486,27 +559,7 @@ class multiple_section extends \Elementor\Widget_Base {
                             <p>Communication 75%</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mt-30">
-                        <div class="circle-progress-single">
-                            <div class="progress-circle position" data-percent="85" data-duration="1000"
-                                data-color="#ff8f43,#164eaa"></div>
-                            <p>Organization 85%</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-md-4 mt-30">
-                        <div class="circle-progress-single">
-                            <div class="progress-circle position" data-percent="90" data-duration="1000"
-                                data-color="#ff8f43,#164eaa"></div>
-                            <p>Analytical Abilities 90%</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mt-30">
-                        <div class="circle-progress-single">
-                            <div class="progress-circle position" data-percent="75" data-duration="1000"
-                                data-color="#ff8f43,#164eaa"></div>
-                            <p>Creativity Design 75%</p>
-                        </div>
-                    </div>
+                     
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 mt-90">
@@ -520,39 +573,7 @@ class multiple_section extends \Elementor\Widget_Base {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 mt-90">
-                        <div id="example-8" class="lines-skills">
-                            <div class="cssProgress">
-                                <p>Problem solving</p>
-                                <div class="cssProgress-label2">90%</div>
-                                <div class="progress1">
-                                    <div class="cssProgress-bar" data-percent="90" style="width: 90%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 mt-90">
-                        <div id="example-7" class="lines-skills">
-                            <div class="cssProgress">
-                                <p>Perseverence</p>
-                                <div class="cssProgress-label2">80%</div>
-                                <div class="progress1">
-                                    <div class="cssProgress-bar" data-percent="80" style="width: 80%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 mt-90">
-                        <div id="example-6" class="lines-skills">
-                            <div class="cssProgress">
-                                <p>Resourcefulness</p>
-                                <div class="cssProgress-label2">75%</div>
-                                <div class="progress1">
-                                    <div class="cssProgress-bar" data-percent="75" style="width: 75%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -570,9 +591,8 @@ class multiple_section extends \Elementor\Widget_Base {
                                 echo '</div>'; 
                         echo '</div>';
 
-                    endforeach; ?>
-
-                      <?php endif;  ?> 
+                    endforeach; ?> 
+                    <?php endif;  ?> 
                     
                 </div>
             </div>
@@ -581,19 +601,22 @@ class multiple_section extends \Elementor\Widget_Base {
             <div id="tab-4" class="tab-content">
                 <div class="row pt-15">
 
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-services mt-30">
-                            <div class="services-images-timelined">
-                                <img src="assets/img/home1/service-img-1.png" alt="">
-                            </div>
-                            <div class="services-text-timelined">
-                                <h4>Business Strategy</h4>
-                                <p>Strategy develop customer organisa knowledge and market perspectivesti hat inform and
-                                    provoke.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
+                <?php if ( $settings['services_expeience'] ) : 
+                    foreach (  $settings['services_expeience'] as $key=>$item ) : 
+                    echo '<div class="col-lg-4 col-md-6 col-sm-6">';
+                        echo '<div class="timelined-services mt-30">';
+                            echo '<div class="services-images-timelined">';
+                             echo '<i class="' . $item['service_icon'] . '" aria-hidden="true"></i>';
+                           echo '</div>';
+                            echo '<div class="services-text-timelined">';
+                                echo '<h4>'. $item['service_name'] . '</h4>';
+                                echo '<p>'. $item['services_details'] . '</p>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                endforeach; ?> 
+                <?php endif;  ?> 
+                
                      
                 </div>
             </div>
