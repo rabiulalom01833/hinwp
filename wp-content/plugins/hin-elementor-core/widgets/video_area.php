@@ -295,7 +295,7 @@ class Video_Area extends Widget_Base {
 			[
 				'name' => 'border-1',
 				'label' => __( 'Border', 'hin-elements' ),
-				'selector' => '{{WRAPPER}} .btn-bgc-1',
+				'selector' => '{{WRAPPER}} .btn-bgc-1,.pricing-half-bottom i',
 			]
 		);
 		$this->add_group_control(

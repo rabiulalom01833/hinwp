@@ -128,7 +128,34 @@ class Pricing_Table extends \Elementor\Widget_Base {
                 
 			]
         );
-        
+		
+		$this->add_control(
+			'text_align_title',
+			[
+				'label' => __( 'Alignment', ' hin-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', ' hin-elements' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', ' hin-elements' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', ' hin-elements' ),
+						'icon' => 'fa fa-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .single-pricing-half' => 'text-align: {{VALUE}};',
+				],
+				'default' => 'center',
+				'toggle' => true,
+			]
+		);
+
         $this->end_controls_section();
   
         $this->start_controls_section(
@@ -168,45 +195,35 @@ class Pricing_Table extends \Elementor\Widget_Base {
 			]
 		);
 
+        $this->add_control(
+			'text_align_list',
+			[
+				'label' => __( 'Alignment', ' hin-elements' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', ' hin-elements' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', ' hin-elements' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', ' hin-elements' ),
+						'icon' => 'fa fa-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} ul.pricing-bottom-list' => 'text-align: {{VALUE}};',
+				],
+				'default' => 'center',
+				'toggle' => true,
+			]
+		);
 
         $this->end_controls_section();
  
-
-       
-        $this->end_controls_section();
-        
-        // STYLE SECTION - TITLE
-		$this->start_controls_section(
-			'title_style',
-			[
-				'label' => __( 'Title', ' hin-elements' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'title_color',
-			[
-				'label' => __( 'Text Color', ' hin-elements' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .section-title h2' => 'color: {{VALUE}};',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} h2',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1
-			]
-		);
-
-		
-		$this->end_controls_section();
-
-           
         $this->start_controls_section(
 			'purchase_button',
 			[
@@ -242,7 +259,206 @@ class Pricing_Table extends \Elementor\Widget_Base {
 			]
         );
  
+		 
 
+		$this->end_controls_section();
+       
+		// STYLE SECTION - Table Price Body
+
+		$this->start_controls_section(
+			'table_body_price_style',
+			[
+				'label' => __( 'Table Background', ' hin-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+ 
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'table_price_body',
+				'label' => __( 'Table Price Body', ' hin-elements' ),
+ 				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .bg-dark-black',
+			]
+		);
+ 
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[   'name' => 'table_list',
+				'label' => __( 'Table List Body', ' hin-elements' ),
+ 				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .single-pricing-all',
+			]
+		);
+  
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border-table',
+				'label' => __( 'Border', 'hin-elements' ),
+				'selector' => '{{WRAPPER}} .single-pricing-all',
+			]
+		);
+       
+		$this->end_controls_section();
+
+		 
+
+		// STYLE SECTION - TITLE
+		
+		$this->start_controls_section(
+			'title_style',
+			[
+				'label' => __( 'Table Title', ' hin-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+      
+		$this->add_control(
+			'title_color',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} h4.pricing-headings' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'background-1',
+				'label' => __( 'Background', 'hin-elements' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} .pricing-headings',
+			]
+        );
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} h4',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+
+	
+       
+		$this->end_controls_section();
+
+           
+      // STYLE SECTION - Currence Style
+		
+		$this->start_controls_section(
+			'title_price_style',
+			[
+				'label' => __( 'Table Price', ' hin-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'title_price_color_style',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .single-pricing-half h1' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography_price',
+				'selector' => '{{WRAPPER}} h1',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+       
+		$this->end_controls_section();
+
+		 // STYLE SECTION - Table List
+		
+		 $this->start_controls_section(
+			'title_price_list',
+			[
+				'label' => __( 'Table List', ' hin-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'title_list_style',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .pricing-bottom-list li' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_list_style_price',
+				'selector' => '{{WRAPPER}} li',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+       
+		$this->end_controls_section();
+
+		
+		 // STYLE SECTION - Table Button Style
+		
+		 $this->start_controls_section(
+			'price_button_style',
+			[
+				'label' => __( 'Table Button', ' hin-elements' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'button_list_style',
+			[
+				'label' => __( 'Text Color', ' hin-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} a.btn-bgc-2' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_list_style_ty',
+				'selector' => '{{WRAPPER}} a',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'button_bg_style',
+				'label' => __( 'Button Bg', 'hin-elements' ),
+				'types' => [ 'classic', 'gradient'],
+				'selector' => '{{WRAPPER}} a.btn-bgc-2',
+			]
+		);
+		
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border-table-style',
+				'label' => __( 'Border', 'hin-elements' ),
+				'selector' => '{{WRAPPER}} a.btn-bgc-2',
+			]
+		);
+       
 		$this->end_controls_section();
   
 	}
@@ -267,7 +483,7 @@ class Pricing_Table extends \Elementor\Widget_Base {
         <div class="single-pricing-all text-center pb-50">
             <div class="single-pricing-half bg-dark-black">
                 <h4 class="pricing-headings"><?php echo $settings['table_name']; ?></h4>
-                <h1><sup><?php echo $settings['currency_sing']; ?></sup><span><?php echo $settings['table_price']; ?></span></h1> 
+                <h1><?php echo $settings['currency_sing']; ?><?php echo $settings['table_price']; ?></h1> 
             </div>
 
             <div class="pricing-half-bottom">
