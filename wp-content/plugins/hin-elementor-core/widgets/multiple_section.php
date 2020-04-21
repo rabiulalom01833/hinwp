@@ -411,22 +411,13 @@ class multiple_section extends \Elementor\Widget_Base {
         $repeater->add_control(
 			'service_icon',
 			[
-				'label' => __( 'Social Icons', 'plugin-domain' ),
-				'type' => \Elementor\Controls_Manager::ICON,
-				'include' => [
-					'fa fa-facebook',
-					'fa fa-flickr',
-					'fa fa-google-plus',
-					'fa fa-instagram',
-					'fa fa-linkedin',
-					'fa fa-pinterest',
-					'fa fa-reddit',
-					'fa fa-twitch',
-					'fa fa-twitter',
-					'fa fa-vimeo',
-					'fa fa-youtube',
+				'label' => __( 'Social Icon', 'text-domain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'solid',
 				],
-				'default' => 'fa fa-facebook',
+				 
 			]
         );
 
@@ -606,7 +597,7 @@ class multiple_section extends \Elementor\Widget_Base {
                     echo '<div class="col-lg-4 col-md-6 col-sm-6">';
                         echo '<div class="timelined-services mt-30">';
                             echo '<div class="services-images-timelined">';
-                             echo '<i class="' . $item['service_icon'] . '" aria-hidden="true"></i>';
+                            \Elementor\Icons_Manager::render_icon ( $item['service_icon'], [ 'aria-hidden' => 'true' ] );
                            echo '</div>';
                             echo '<div class="services-text-timelined">';
                                 echo '<h4>'. $item['service_name'] . '</h4>';
