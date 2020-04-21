@@ -340,6 +340,63 @@ class multiple_section extends \Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
+
+
+        $this->start_controls_section(
+			'experience_box',
+			[
+                'label' => __( 'Experience', ' hin-elements' ),
+                'label_block' => true,
+			]
+		);
+
+        $repeater = new Repeater();
+
+         
+        $repeater->add_control(
+			'experience_list', [
+				'label' => __( 'Experience Name', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+        );
+        $repeater->add_control(
+			'experience_year', [
+				'label' => __( 'Experience Year', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+        );
+        $repeater->add_control(
+            'experience_details', [
+                'label' => __( 'Experience details', ' hin-elements' ),
+                'type' => Controls_Manager::TEXTAREA,
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+			'repeat_expeience',
+			[
+				'label' => __( 'Experience', ' hin-elements' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[  
+						'experience_list' => __( 'Experience Institute', ' hin-elements' ),
+						'experience_year' => __( 'Experience Year', ' hin-elements' ),
+						'experience_details' => __( 'Experience Details', ' hin-elements' ),
+						 
+                    ],
+               
+					 
+				],
+				'title_field' => '{{{ experience_list }}}',
+			]
+        );
+        
+        $this->end_controls_section();
+
+
   
 	}
 
@@ -354,8 +411,8 @@ class multiple_section extends \Elementor\Widget_Base {
 	protected function render() {
 
     $settings = $this->get_settings_for_display();
-    $target = $settings['video_button']['is_external'] ? ' target="_blank"' : '';
-		$nofollow = $settings['video_button']['nofollow'] ? ' rel="nofollow"' : '';
+    $target = $settings['about_message_url']['is_external'] ? ' target="_blank"' : '';
+		$nofollow = $settings['about_message_url']['nofollow'] ? ' rel="nofollow"' : '';
     ?>
 
 <section id="introduce-area" class="introduce-all bg-light-black pb-130 pt-130">
@@ -382,38 +439,38 @@ class multiple_section extends \Elementor\Widget_Base {
                     <div class="col-lg-6 col-md-12 col-sm-12 mt-30">
                         <div class="about-timelined-total">
                             <div class="section-title">
-                                <h5><?php echo $settings['']; ?></h5>
-                                <h2><?php echo $settings['']; ?><span class="text-yellow"><?php echo $settings['']; ?></span>
+                                <h5><?php echo $settings['about_title']; ?></h5>
+                                <h2><?php echo $settings['about_sub_title']; ?> <span class="text-yellow"><?php echo $settings['about_sub_title_color']; ?></span>
                                 </h2>
                                 <div class="section-title-border"></div>
-                                <p class="mt-5"><?php echo $settings['']; ?></p>
+                                <p class=""><?php echo $settings['about_details']; ?></p>
                             </div>
                             <div class="row pt-30 pb-25">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="list-1">
                                         <ul class="timeline-para-list text-left">
-                                            <li><strong>Birthday:</strong> <?php echo $settings['']; ?> </li>
-                                            <li><strong>City:</strong><?php echo $settings['']; ?> </li>
-                                            <li><strong>Study:</strong> <?php echo $settings['']; ?> </li>
-                                            <li><strong>Website:</strong> <?php echo $settings['']; ?>
+                                            <li><strong>Birthday:</strong> <?php echo $settings['about_birthday']; ?> </li>
+                                            <li><strong>City:</strong><?php echo $settings['about_city']; ?> </li>
+                                            <li><strong>Study:</strong> <?php echo $settings['about_study']; ?> </li>
+                                            <li><strong>Website:</strong> <?php echo $settings['about_website']; ?>
                                             </li>
-                                            <li><strong>Phone:</strong> <?php echo $settings['']; ?> </li>
+                                            <li><strong>Phone:</strong> <?php echo $settings['about_phone']; ?> </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="list-2">
                                         <ul class="timeline-para-list">
-                                            <li><strong>Age:</strong> <?php echo $settings['']; ?> </li>
-                                            <li><strong>Interests:</strong> <?php echo $settings['']; ?></li>
-                                            <li><strong>Degree:</strong> <?php echo $settings['']; ?> </li>
-                                            <li><strong>Mail:</strong> <?php echo $settings['']; ?> </li>
-                                            <li><strong>Twitter:</strong> <?php echo $settings['']; ?> </li>
+                                            <li><strong>Age:</strong> <?php echo $settings['about_age']; ?> </li>
+                                            <li><strong>Interests:</strong> <?php echo $settings['about_interest']; ?></li>
+                                            <li><strong>Degree:</strong> <?php echo $settings['about_degree']; ?> </li>
+                                            <li><strong>Mail:</strong> <?php echo $settings['about_mail']; ?> </li>
+                                            <li><strong>Twitter:</strong> <?php echo $settings['about_twitter']; ?> </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <a href="<?php echo esc_url($settings['video_url']['url']); ?>" class="btn-3 btn-bgc-1"><?php echo $settings['']; ?></a>
+                            <a href="<?php echo esc_url($settings['about_message_url']['url']); ?>" class="btn-3 btn-bgc-1"><?php echo $settings['about_message_button']; ?></a>
                         </div>
                     </div>
                 </div>
@@ -502,66 +559,28 @@ class multiple_section extends \Elementor\Widget_Base {
             <!-- Tab Experience -->
             <div id="tab-3" class="tab-content">
                 <div class="row mt-15">
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="timelined-Experience mt-30">
-                            <p>Graphic Design University of Cambridge</p>
-                            <p>2013 - 2019</p>
-                            <p>There are many variations of passages of Lorem Ipsum availa
-                                <br> ble, but the majority have suffered alteration in some form.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="timelined-Experience mt-30">
-                            <p>Graphic Design University of Cambridge</p>
-                            <p>2013 - 2019</p>
-                            <p>There are many variations of passages of Lorem Ipsum availa
-                                <br> ble, but the majority have suffered alteration in some form.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="timelined-Experience mt-30">
-                            <p>Graphic Design University of Cambridge</p>
-                            <p>2013 - 2019</p>
-                            <p>There are many variations of passages of Lorem Ipsum availa
-                                <br> ble, but the majority have suffered alteration in some form.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="timelined-Experience mt-30">
-                            <p>Graphic Design University of Cambridge</p>
-                            <p>2013 - 2019</p>
-                            <p>There are many variations of passages of Lorem Ipsum availa
-                                <br> ble, but the majority have suffered alteration in some form.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="timelined-Experience mt-30">
-                            <p>Graphic Design University of Cambridge</p>
-                            <p>2013 - 2019</p>
-                            <p>There are many variations of passages of Lorem Ipsum availa
-                                <br> ble, but the majority have suffered alteration in some form.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="timelined-Experience mt-30">
-                            <p>Graphic Design University of Cambridge</p>
-                            <p>2013 - 2019</p>
-                            <p>There are many variations of passages of Lorem Ipsum availa
-                                <br> ble, but the majority have suffered alteration in some form.
-                            </p>
-                        </div>
-                    </div>
+                    
+                    <?php if ( $settings['repeat_expeience'] ) : 
+                       foreach (  $settings['repeat_expeience'] as $key=>$item ) : 
+                        echo '<div class="col-lg-6 col-md-12 col-sm-12">'; 
+                            echo '<div class="timelined-Experience mt-30">';
+                                    echo '<p>'. $item['experience_list'] . '</p>';
+                                    echo '<p>'. $item['experience_year'] . '</p>';
+                                    echo '<p>'. $item['experience_details'] . '</p>';
+                                echo '</div>'; 
+                        echo '</div>';
+
+                    endforeach; ?>
+
+                      <?php endif;  ?> 
+                    
                 </div>
             </div>
 
             <!-- Tab Services  -->
             <div id="tab-4" class="tab-content">
                 <div class="row pt-15">
+
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="timelined-services mt-30">
                             <div class="services-images-timelined">
@@ -574,66 +593,8 @@ class multiple_section extends \Elementor\Widget_Base {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-services mt-30">
-                            <div class="services-images-timelined">
-                                <img src="assets/img/home1/service-img-2.png" alt="">
-                            </div>
-                            <div class="services-text-timelined">
-                                <h4>Business Strategy</h4>
-                                <p>Strategy develop customer organisa knowledge and market perspectivesti hat inform and
-                                    provoke.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-services mt-30">
-                            <div class="services-images-timelined">
-                                <img src="assets/img/home1/service-img-3.png" alt="">
-                            </div>
-                            <div class="services-text-timelined">
-                                <h4>Business Strategy</h4>
-                                <p>Strategy develop customer organisa knowledge and market perspectivesti hat inform and
-                                    provoke.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-services mt-30">
-                            <div class="services-images-timelined">
-                                <img src="assets/img/home1/service-img-4.png" alt="">
-                            </div>
-                            <div class="services-text-timelined">
-                                <h4>Business Strategy</h4>
-                                <p>Strategy develop customer organisa knowledge and market perspectivesti hat inform and
-                                    provoke.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-services mt-30">
-                            <div class="services-images-timelined">
-                                <img src="assets/img/home1/service-img-5.png" alt="">
-                            </div>
-                            <div class="services-text-timelined">
-                                <h4>Business Strategy</h4>
-                                <p>Strategy develop customer organisa knowledge and market perspectivesti hat inform and
-                                    provoke.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-services mt-30">
-                            <div class="services-images-timelined">
-                                <img src="assets/img/home1/service-img-6.png" alt="">
-                            </div>
-                            <div class="services-text-timelined">
-                                <h4>Business Strategy</h4>
-                                <p>Strategy develop customer organisa knowledge and market perspectivesti hat inform and
-                                    provoke.</p>
-                            </div>
-                        </div>
-                    </div>
+                    
+                     
                 </div>
             </div>
 
