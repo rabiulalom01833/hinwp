@@ -461,6 +461,70 @@ class multiple_section extends \Elementor\Widget_Base {
         );
         
         $this->end_controls_section();
+
+
+        $this->start_controls_section(
+			'portfolio_box',
+			[
+                'label' => __( 'Portfolio', ' hin-elements' ),
+                'label_block' => true,
+			]
+		);
+
+        $repeater = new Repeater();
+
+         
+        $repeater->add_control(
+			'portfolio_title', [
+				'label' => __( 'Portfolio Title', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+        );
+
+        $repeater->add_control(
+			'portfolio_image',
+			array(
+				'label'   => esc_html__( 'Image', ' hin-elements' ),
+				'type'    => Controls_Manager::MEDIA,
+				'default' => array(
+					'url' => Utils::get_placeholder_image_src(),
+				),
+				'dynamic' => array( 'active' => true ),
+			)
+		);
+
+		$repeater->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name' => 'thumbnail', // // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `thumbnail_size` and `thumbnail_custom_dimension`.
+				'exclude' => [],
+				'include' => [],
+				'default' => 'full',
+			]
+		);
+        
+        
+        $this->add_control(
+			'portfolio_repeat',
+			[
+				'label' => __( 'Services', ' hin-elements' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[  
+						'portfolio_title' => __( 'Portfolio Title', ' hin-elements' ),
+						'portfolio_image' => __( 'Portfolio Image', ' hin-elements' ),
+						 
+                    ],
+               
+					 
+				],
+				'title_field' => '{{{ portfolio_title }}}',
+			]
+        );
+        
+        $this->end_controls_section();
   
 	}
 
@@ -615,84 +679,25 @@ class multiple_section extends \Elementor\Widget_Base {
             <!-- Tab Portfolio -->
             <div id="tab-5" class="tab-content">
                 <div class="row pt-15">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-portfolio-all mt-30">
-                            <div class="port-img-timelined">
-                                <img src="assets/img/home1/port-img-1.png" alt="">
-                                <h6>Amazing Design Mockup
-                                    <br> Design for Client</h6>
-                            </div>
-                            <div class="port-hover-icons">
-                                <a class="images-gallery" href="assets/img/home1/port-img-1.png"><i
-                                        class="fa fa-search-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-portfolio-all mt-30">
-                            <div class="port-img-timelined">
-                                <img src="assets/img/home1/port-img-2.png" alt="">
-                                <h6>Creative Design
-                                    <br> for Client</h6>
-                            </div>
-                            <div class="port-hover-icons">
-                                <a class="images-gallery" href="assets/img/home1/port-img-2.png"><i
-                                        class="fa fa-search-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-portfolio-all mt-30">
-                            <div class="port-img-timelined">
-                                <img src="assets/img/home1/port-img-3.png" alt="">
-                                <h6>WP Development For
-                                    <br> My Client</h6>
-                            </div>
-                            <div class="port-hover-icons">
-                                <a class="images-gallery" href="assets/img/home1/port-img-3.png"><i
-                                        class="fa fa-search-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-portfolio-all mt-30">
-                            <div class="port-img-timelined">
-                                <img src="assets/img/home1/port-img-4.png" alt="">
-                                <h6>Extraordinary Image
-                                    <br> Caption</h6>
-                            </div>
-                            <div class="port-hover-icons">
-                                <a class="images-gallery" href="assets/img/home1/port-img-4.png"><i
-                                        class="fa fa-search-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-portfolio-all mt-30">
-                            <div class="port-img-timelined">
-                                <img src="assets/img/home1/port-img-5.png" alt="">
-                                <h6>Retouch Product Design
-                                    <br> For Buyer</h6>
-                            </div>
-                            <div class="port-hover-icons">
-                                <a class="images-gallery" href="assets/img/home1/port-img-5.png"><i
-                                        class="fa fa-search-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="timelined-portfolio-all mt-30">
-                            <div class="port-img-timelined">
-                                <img src="assets/img/home1/port-img-6.png" alt="">
-                                <h6>This Is Awesome
-                                    <br> Photography</h6>
-                            </div>
-                            <div class="port-hover-icons">
-                                <a class="images-gallery" href="assets/img/home1/port-img-6.png"><i
-                                        class="fa fa-search-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
+
+                <?php if ( $settings['portfolio_repeat'] ) : 
+                    foreach (  $settings['portfolio_repeat'] as $key=>$item ) : 
+                     echo '<div class="col-lg-4 col-md-6 col-sm-6">';
+                         echo '<div class="timelined-portfolio-all mt-30">';
+                             echo '<div class="port-img-timelined">'; ?>
+                             <?php  echo Group_Control_Image_Size::get_attachment_image_html( $item, 'thumbnail', 'portfolio_image' ); ?>
+                             <?php  echo '<h6>'. $item['portfolio_title'] . '</h6>';
+                             echo '</div>';
+                             echo '<div class="port-hover-icons">';
+                             echo '<a class="images-gallery" href="assets/img/home1/port-img-1.png"><i
+                                        class="fa fa-search-plus"></i></a>';
+                             echo '</div>';
+                         echo '</div>';
+                     echo '</div>';
+                    endforeach; ?> 
+                    <?php endif;  ?> 
+                   
+                    
                 </div>
             </div>
 
