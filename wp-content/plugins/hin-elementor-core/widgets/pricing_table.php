@@ -98,15 +98,7 @@ class Pricing_Table extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-
-		$this->add_control(
-			'table_id',
-			[
-				'label' => __( 'Table Id Name', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => __( '', ' hin-elements' ),
- 			]
-        );
+  
         
         $this->add_control(
 			'table_name',
@@ -138,76 +130,11 @@ class Pricing_Table extends \Elementor\Widget_Base {
         );
         
         $this->end_controls_section();
-
-
-        $this->start_controls_section(
-			'pricing_table_year',
-			[
-				'label' => __( 'Pricing Table Year', 'plugin-name' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'year_1',
-			[
-				'label' => __( 'Type Year 1', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => __( '2020', ' hin-elements' ), 
-			]
-        );
-
-        $this->add_control(
-			'id1',
-			[
-				'label' => __( 'Table Id Name 1', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => __( 'id1', ' hin-elements' ), 
-			]
-        );
-
-
-        $this->add_control(
-			'year_2',
-			[
-				'label' => __( 'Type Year 2', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => __( '2021', ' hin-elements' ), 
-			]
-        );
-        $this->add_control(
-			'id2',
-			[
-				'label' => __( 'Table Id Name 2', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => __( 'id2', ' hin-elements' ), 
-			]
-        );
-        $this->add_control(
-			'year_3',
-			[
-				'label' => __( 'Type Year 3', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => __( '2022', ' hin-elements' ), 
-			]
-        );
-
-        $this->add_control(
-			'id3',
-			[
-				'label' => __( 'Table Id Name 3', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-                'default' => __( 'id3', ' hin-elements' ), 
-			]
-        );
-        
-        $this->end_controls_section();
-
-
+  
         $this->start_controls_section(
 			'table_list_1',
 			[
-                'label' => __( '1 Year Table List', ' hin-elements' ),
+                'label' => __( 'Table List', ' hin-elements' ),
                 'label_block' => true,
 			]
 		);
@@ -243,87 +170,7 @@ class Pricing_Table extends \Elementor\Widget_Base {
 
 
         $this->end_controls_section();
-
-
-        $this->start_controls_section(
-			'table_list_2',
-			[
-                'label' => __( '2 Year Table List', ' hin-elements' ),
-                'label_block' => true,
-			]
-		);
-
-        $repeater = new Repeater();
-
-         
-        $repeater->add_control(
-			'list_title_2', [
-				'label' => __( 'list here', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-				'label_block' => true,
-			]
-        );
-        
-        $this->add_control(
-			'list_repeat_2',
-			[
-				'label' => __( 'List', ' hin-elements' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[  
-						'list_title_2' => __( 'list here ', ' hin-elements' ),
-						 
-                    ],
-               
-					 
-				],
-				'title_field' => '{{{ list_title_2 }}}',
-			]
-		);
-
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-			'table_list_3',
-			[
-                'label' => __( '3 Year Table List', ' hin-elements' ),
-                'label_block' => true,
-			]
-		);
-
-        $repeater = new Repeater();
-
-         
-        $repeater->add_control(
-			'list_title_3', [
-				'label' => __( 'list here', ' hin-elements' ),
-				'type' => Controls_Manager::TEXT,
-				'label_block' => true,
-			]
-        );
-        
-        $this->add_control(
-			'list_repeat_3',
-			[
-				'label' => __( 'List', ' hin-elements' ),
-				'type' => Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[  
-						'list_title_3' => __( 'list here ', ' hin-elements' ),
-						 
-                    ],
-               
-					 
-				],
-				'title_field' => '{{{ list_title_3 }}}',
-			]
-		);
-
-
-        $this->end_controls_section();
+ 
 
        
         $this->end_controls_section();
@@ -359,7 +206,45 @@ class Pricing_Table extends \Elementor\Widget_Base {
 		
 		$this->end_controls_section();
 
-          
+           
+        $this->start_controls_section(
+			'purchase_button',
+			[
+                'label' => __( 'Button', ' hin-elements' ),
+                'label_block' => true,
+			]
+		);
+ 
+ 
+        $this->add_control(
+			'purchase_button_name', [
+				'label' => __( 'Button Name', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => __( 'Type button title', ' hin-elements' ),
+				'default' => 'Read More',
+				'label_block' => true,
+
+			]
+		);
+
+		$this->add_control(
+			'purchase_button_url',
+			[
+				'label' => __( 'Button link', 'ic-elements' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => __( 'https://your-link.com', 'ic-elements' ),
+				'show_external' => true,
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+			]
+        );
+ 
+
+		$this->end_controls_section();
+  
 	}
 
 	/**
@@ -373,57 +258,31 @@ class Pricing_Table extends \Elementor\Widget_Base {
 	protected function render() {
 
         $settings = $this->get_settings_for_display();
-        
+        $target = $settings['purchase_button_url']['is_external'] ? ' target="_blank"' : '';
+		$nofollow = $settings['purchase_button_url']['nofollow'] ? ' rel="nofollow"' : '';
         ?>
 
-        <!-- <div class="section-title">
-            <h2><?php echo $settings['title']; ?></h2>
-            <div class="section-title-border-center"></div>
-        </div> -->
-
+     
 
         <div class="single-pricing-all text-center pb-50">
             <div class="single-pricing-half bg-dark-black">
                 <h4 class="pricing-headings"><?php echo $settings['table_name']; ?></h4>
-                <h1><sup><?php echo $settings['currency_sing']; ?></sup><span><?php echo $settings['table_price']; ?></span></h1>
-                <ul class="tabs yearly-price tab-change-1">
-                    <li class="tab-link <?php echo $settings['table_id']; ?>" data-tab="<?php echo $settings['id1']; ?>"><?php echo $settings['year_1']; ?></li>
-                    <li class="tab-link" data-tab="<?php echo $settings['id2']; ?>"><?php echo $settings['year_2']; ?></li>
-                    <li class="tab-link" data-tab="<?php echo $settings['id3']; ?>"><?php echo $settings['year_3']; ?></li>
-                </ul>
+                <h1><sup><?php echo $settings['currency_sing']; ?></sup><span><?php echo $settings['table_price']; ?></span></h1> 
             </div>
 
-            <div class="pricing-half-bottom tab-content <?php echo $settings['table_id']; ?>" id="<?php echo $settings['id1']; ?>">
+            <div class="pricing-half-bottom">
                 <?php if ( $settings['list_repeat_1'] ) :  
                     echo '<ul class="pricing-bottom-list"> ';
                         foreach (  $settings['list_repeat_1'] as $key=>$item ) : 
                         echo'<li>'. $item['list_title_1'] . '</li>';
                         endforeach;     
-                    echo '</ul>';
-                    echo '<a href="#" class="btn-4 btn-bgc-2">Purchase<i class="fas fa-chevron-right"></i></a>';
-                endif; ?>   
+					echo '</ul>';
+					?>
+				 <a href="<?php echo esc_url($settings['purchase_button_url']['url']); ?>"  target="_blanck" class="btn-4 btn-bgc-2"><?php echo $settings['purchase_button_name']; ?><i class="fas fa-chevron-right"></i></a> 
+				 
+                <?php endif; ?>   
              </div>
-
-            <div class="pricing-half-bottom tab-content" id="<?php echo $settings['id2']; ?>">
-              <?php if ( $settings['list_repeat_2'] ) :  
-                    echo '<ul class="pricing-bottom-list"> ';
-                        foreach (  $settings['list_repeat_2'] as $key=>$item ) : 
-                        echo'<li>'. $item['list_title_2'] . '</li>';
-                        endforeach;     
-                    echo '</ul>';
-                    echo '<a href="#" class="btn-4 btn-bgc-2">Purchase<i class="fas fa-chevron-right"></i></a>';
-                endif; ?> 
-            </div>
-            <div class="pricing-half-bottom tab-content" id="<?php echo $settings['id3']; ?>">
-                <?php if ( $settings['list_repeat_3'] ) :  
-                    echo '<ul class="pricing-bottom-list"> ';
-                        foreach (  $settings['list_repeat_3'] as $key=>$item ) : 
-                        echo'<li>'. $item['list_title_3'] . '</li>';
-                        endforeach;     
-                    echo '</ul>';
-                    echo '<a href="#" class="btn-4 btn-bgc-2">Purchase<i class="fas fa-chevron-right"></i></a>';
-                endif; ?> 
-            </div>
+ 
         </div>
          
         <?php
