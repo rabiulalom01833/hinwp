@@ -56,6 +56,7 @@ class Plugin {
 		require_once( __DIR__ . '/widgets/video_area.php' );
 		require_once( __DIR__ . '/widgets/pricing_table.php' );
 		require_once( __DIR__ . '/widgets/multiple_section.php' );
+		require_once( __DIR__ . '/widgets/testimonial.php' );
     }
 
 	/**
@@ -77,6 +78,7 @@ class Plugin {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Video_Area() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Pricing_Table() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\multiple_section() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Testimonial() );
 	 
 	}
 
