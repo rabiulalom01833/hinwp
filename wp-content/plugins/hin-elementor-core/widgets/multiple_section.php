@@ -342,6 +342,57 @@ class multiple_section extends \Elementor\Widget_Base {
         $this->end_controls_section();
 
 
+		// Skill 
+
+		
+        $this->start_controls_section(
+			'skill_box',
+			[
+                'label' => __( 'Skill', ' hin-elements' ),
+                'label_block' => true,
+			]
+		);
+
+        $repeater = new Repeater();
+
+         
+        $repeater->add_control(
+			'skill_name', [
+				'label' => __( 'Skill Name', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+        );
+        $repeater->add_control(
+			'skill_percentage', [
+				'label' => __( 'Skill percentage', ' hin-elements' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+        );
+      
+        $this->add_control(
+			'skill_repeater',
+			[
+				'label' => __( 'Skill', ' hin-elements' ),
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[  
+						'skill_name' => __( 'Communication 75%', ' hin-elements' ),
+						'skill_percentage' => __( '75', ' hin-elements' ), 
+						 
+                    ],
+               
+					 
+				],
+				'title_field' => '{{{ skill_name }}}',
+			]
+        );
+        
+        $this->end_controls_section();
+
+
         $this->start_controls_section(
 			'experience_box',
 			[
@@ -606,30 +657,22 @@ class multiple_section extends \Elementor\Widget_Base {
 
             <!-- Tab Skill -->
             <div id="tab-2" class="tab-content">
+
                 <div class="row mt-20">
-                    <div class="col-lg-3 col-sm-6 col-md-4 mt-30">
-                        <div class="circle-progress-single">
-                            <div class="progress-circle position" data-percent="75" data-duration="1000"
-                                data-color="#ff8f43,#164eaa"></div>
-                            <p>Communication 75%</p>
-                        </div>
-                    </div>
+					<?php if ( $settings['skill_repeater'] ) : 
+                    foreach (  $settings['skill_repeater'] as $key=>$item ) : 
+                    echo '<div class="col-lg-3 col-sm-6 col-md-4 mt-30">';
+                        echo '<div class="circle-progress-single">'; ?>
+                            <div class="progress-circle position" data-percent="<?php echo $item['skill_percentage']; ?>" data-duration="1000"
+								data-color="#ff8f43,#164eaa">
+								 </div> 
+                            <p><?php echo $item['skill_name']; ?></p> 
+                       <?php echo '</div>';
+                    echo '</div>';
+					endforeach; ?> 
+					<?php endif;  ?> 	
                      
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 mt-90">
-                        <div id="example-9" class="lines-skills">
-                            <div class="cssProgress">
-                                <p>Project Management</p>
-                                <div class="cssProgress-label2">75%</div>
-                                <div class="progress1">
-                                    <div class="cssProgress-bar" data-percent="75" style="width: 75%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+                </div> 
             </div>
 
             <!-- Tab Experience -->
